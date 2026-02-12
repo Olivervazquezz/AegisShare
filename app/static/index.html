@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AegisShare — Plataforma de prevención de pérdida de datos impulsada por IA.">
+  <title>AegisShare — Secure Vault</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <main class="card" role="main">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header__title">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        AegisShare
+      </h1>
+      <p class="header__subtitle">AI-Powered Data Loss Prevention</p>
+    </header>
+
+    <!-- ================================================================
+         Login Section
+         ================================================================ -->
+    <section id="loginSection" aria-label="Inicio de sesión">
+      <label for="email" class="hidden">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-input"
+        placeholder="Email (hacker@aegisshare.com)"
+        autocomplete="email"
+        required
+      >
+
+      <label for="password" class="hidden">Contraseña</label>
+      <input
+        type="password"
+        id="password"
+        class="form-input form-input--last"
+        placeholder="Password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button type="button" onclick="login()" class="btn btn--primary">
+        Iniciar Sesión Segura
+      </button>
+
+      <p id="loginError" class="alert alert--error hidden" role="alert"></p>
+    </section>
+
+    <!-- ================================================================
+         Upload & Dashboard Section (hidden until login)
+         ================================================================ -->
+    <section id="uploadSection" class="hidden" aria-label="Panel de escaneo">
+
+      <!-- Verified identity banner -->
+      <div class="identity-banner">
+        <p class="identity-banner__text">
+          Identidad Verificada: <span id="userDisplay" class="identity-banner__user"></span>
+        </p>
+      </div>
+
+      <!-- File dropzone -->
+      <div class="dropzone" role="button" tabindex="0" aria-label="Subir archivo para análisis" onclick="openFilePicker()">
+        <i class="fa-solid fa-cloud-upload-alt dropzone__icon" aria-hidden="true"></i>
+        <p class="dropzone__text">Click para analizar archivo con IA</p>
+        <input type="file" id="fileInput" class="hidden" onchange="uploadFile()" aria-label="Seleccionar archivo">
+      </div>
+
+      <!-- Analysis result -->
+      <div id="resultArea" class="result hidden">
+        <h2 class="result__title">Resultado del Análisis:</h2>
+        <div id="statusBadge" class="status-badge"></div>
+        <pre id="jsonResult" class="result__json"></pre>
+      </div>
+
+      <!-- Scan history -->
+      <div class="history">
+        <h2 class="history__title">
+          <i class="fa-solid fa-list" aria-hidden="true"></i>
+          Historial de Incidentes
+        </h2>
+
+        <div class="history__table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Archivo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
+        </div>
+
+        <button type="button" onclick="loadHistory()" class="btn btn--link">
+          Actualizar Historial
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Application Script (defer ensures DOM is ready) -->
+  <script src="/static/js/app.js" defer></script>
+</body>
+</html>
