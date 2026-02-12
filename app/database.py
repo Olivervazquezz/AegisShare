@@ -4,11 +4,17 @@ AegisShare — Database Configuration
 Sets up the SQLAlchemy engine, session factory, and declarative base.
 """
 
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-# Database URL — SQLite for local development.
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+# Load variables from .env into os.environ.
+load_dotenv()
+
+# Database URL — configurable via environment variable.
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sql_app.db")
 
 # Engine — ``check_same_thread=False`` is required for SQLite when used
 # with FastAPI's async concurrency model.

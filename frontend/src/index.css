@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------
+   AegisShare — Design Tokens
+   ---------------------------------------------------------------- */
+@theme {
+  --color-aegis-bg: #0f172a;
+  --color-aegis-surface: #1e293b;
+  --color-aegis-surface-hover: #273548;
+  --color-aegis-border: #334155;
+  --color-aegis-accent: #3b82f6;
+  --color-aegis-accent-hover: #2563eb;
+  --color-aegis-text: #e2e8f0;
+  --color-aegis-text-muted: #94a3b8;
+  --color-aegis-success: #22c55e;
+  --color-aegis-danger: #ef4444;
+  --color-aegis-warning: #f59e0b;
+}
+
+/* ----------------------------------------------------------------
+   Base
+   ---------------------------------------------------------------- */
+body {
+  @apply bg-aegis-bg text-aegis-text antialiased;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-aegis-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-aegis-border); border-radius: 3px; }

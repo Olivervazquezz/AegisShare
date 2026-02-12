@@ -19,6 +19,23 @@ venv/
 # Database (local development)
 *.db
 
+
 # OS
 .DS_Store
 Thumbs.db
+
+# ---------------------------------
+# Frontend (Node/React/Vite)
+# ---------------------------------
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Coverage
+coverage/
+.nyc_output/
